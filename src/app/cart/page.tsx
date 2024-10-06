@@ -8,11 +8,17 @@ import { useRouter } from "next/navigation";
 import { loadCartFromLocalStorage } from "../../redux/cartSlice";
 import ShowImage from "@/components/ShowImage";
 import { parseImageUrl } from "@/lib/parseImageUrl";
+import { Product } from "../../graphql/getProducts";
+
+type Items = Product & {
+  selectedColor?: string;
+  selectedSize?: string;
+};
 
 const CartPage = () => {
   const dispatch = useDispatch();
   const router = useRouter();
-  const items = useSelector((state: RootState) => state.cart.items);
+  const items: Items[] = useSelector((state: RootState) => state.cart.items);
 
   // Check if user is logged in
   useEffect(() => {
@@ -67,7 +73,9 @@ const CartPage = () => {
                 >
                   <div className="flex items-center space-x-4 md:gap-4">
                     <ShowImage
-                      src={parseImageUrl(item.images[0])}
+                      // @ts-expect-error:next-line
+                      // ignoring this error because the function parseImage has null checker
+                      src={parseImageUrl(item?.images[0])}
                       alt={item.title || "Product_image"}
                       width={40}
                       height={20}

@@ -9,6 +9,7 @@ import { addToCart } from "../redux/cartSlice";
 import { RootState } from "../redux/store";
 import cart_image from "../../public/assets/shopping-cart.png";
 import ShowImage from "@/components/ShowImage";
+import { Product } from "../../graphql/getProducts";
 
 export default function Home() {
   const dispatch = useDispatch();

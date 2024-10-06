@@ -17,9 +17,11 @@ export const GET_PRODUCTS = gql`
   }
 `;
 
-// TypeScript types for the query
 export type Product = {
   id: string;
+  title?: string;
+  description?: string;
+  images?: string[] | null;
   name: string;
   price: number;
   image: string;

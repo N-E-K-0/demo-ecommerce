@@ -3,7 +3,7 @@ import React from "react";
 type VariationControlProps = {
   type: string;
   value: string;
-  setSelectedValue: () => void;
+  setSelectedValue: (e: string) => void;
   variationArray: string[];
 };
 
@@ -21,6 +21,7 @@ export default function VariationControl({
       <select
         id="size"
         value={value}
+        // onChange={(e) => setSelectedValue(e.target.value)}
         onChange={(e) => setSelectedValue(e.target.value)}
         className="rounded-md p-2 border border-gray-300"
       >
