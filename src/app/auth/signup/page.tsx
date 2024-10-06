@@ -17,15 +17,19 @@ const SignUpPage = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const { user, tokens } = await signUp(name, email, password);
+      const { tokens } = await signUp(name, email, password);
 
       // Store the JWT tokens (access_token, refresh_token) in localStorage
       localStorage.setItem("access_token", tokens.access_token);
       localStorage.setItem("refresh_token", tokens.refresh_token);
 
       router.push("/");
-    } catch (err: any) {
-      setError(err.message || "Failed to sign up");
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("Failed to sign up");
+      }
     } finally {
       setLoading(false);
     }

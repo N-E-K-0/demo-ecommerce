@@ -22,8 +22,12 @@ const LogInPage = () => {
       const tokens = await logIn(email, password);
       dispatch(setAuthTokens(tokens));
       router.push("/");
-    } catch (err: any) {
-      setError(err.message || "Failed to log in");
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("Failed to log in");
+      }
     } finally {
       setLoading(false);
     }
