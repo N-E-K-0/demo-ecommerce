@@ -9,7 +9,12 @@ import { addToCart } from "../redux/cartSlice";
 import { RootState } from "../redux/store";
 import cart_image from "../../public/assets/shopping-cart.png";
 import ShowImage from "@/components/ShowImage";
-import { Product } from "../../graphql/getProducts";
+import { Product } from "../graphql/getProducts";
+
+type Category = {
+  id: string;
+  name: string;
+};
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -22,12 +27,12 @@ export default function Home() {
 
   // Memoized unique categories
   const uniqueCategories = useMemo(() => {
-    return data?.products.reduce((acc, product) => {
+    return data?.products.reduce((acc: Category[], product: Product) => {
       if (!acc.some((item) => item.name === product.category.name)) {
         acc.push({ id: product.category.id, name: product.category.name });
       }
       return acc;
-    }, []);
+    }, [] as Category[]);
   }, [data?.products]);
 
   // Memoized product filtering and sorting
@@ -55,7 +60,7 @@ export default function Home() {
 
   // Memoized callback for adding products to the cart
   const handleAddToCart = useCallback(
-    (product) => {
+    (product: Product) => {
       const itemInCart = cartItems.find((item) => item.id === product.id);
 
       if (itemInCart) {
@@ -103,7 +108,7 @@ export default function Home() {
             className="border-2 border-gray-300	rounded-md"
           >
             <option value="">All Categories</option>
-            {uniqueCategories?.map((category) => (
+            {uniqueCategories?.map((category: Category) => (
               <option key={category?.id} value={category?.name}>
                 {category?.name}
               </option>

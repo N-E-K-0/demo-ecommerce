@@ -25,7 +25,11 @@ export type Product = {
   name: string;
   price: number;
   image: string;
-  category: string;
+  category: {
+    id: string;
+    name: string;
+    image: string;
+  };
 };
 
 export type ProductsData = {
