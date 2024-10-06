@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Demo E-Commerce Application
+
+This is a fully functional e-commerce application built with **Next.js**, leveraging **GraphQL** for data fetching and **Redux Toolkit** for state management.
 
 ## Getting Started
 
-First, run the development server:
+To run the application locally, follow these steps:
+
+1. **Clone the Repository:**
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <repository-url>
+
+cd <repository-folder>
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Install Dependencies:** Use npm or yarn to install the necessary libraries.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```python
+npm install
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# or
 
-## Learn More
+yarn install
+```
 
-To learn more about Next.js, take a look at the following resources:
+3.**Run the Application:** Start the development server:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```python
+npm run dev
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# or
 
-## Deploy on Vercel
+yarn dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Open your browser and navigate to http://localhost:3000 to view the application.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Libraries Used
+1. **apollo/client:** For handling GraphQL queries and state management.
+2. **reduxjs/toolkit:** To simplify state management with Redux.
+3. **graphql:** The query language for your API.
+4. **next:** The React framework for server-side rendering and static site generation.
+5. **react:** JavaScript library for building user interfaces.
+6. **react-dom:** Provides methods to interact with the DOM.
+7. **react-redux:** Official React bindings for Redux
+
+## Design Decisions
+
+This application is structured using a component-based architecture, promoting reusability and maintainability. The product details page includes functionality for selecting variations (size and color) and handling a shopping cart, ensuring a seamless user experience.
+
+State management is achieved through Redux Toolkit, which allows for a centralized store that maintains the authentication state and cart items. Apollo Client is utilized for fetching data via GraphQL, offering efficient data management and caching.
+
+Overall, this application emphasizes performance, usability, and a responsive design, making it a robust solution for e-commerce needs.
+
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
