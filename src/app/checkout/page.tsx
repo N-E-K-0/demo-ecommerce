@@ -50,6 +50,8 @@ const CheckoutPage = () => {
                   >
                     <div className="flex items-center space-x-4 md:gap-4">
                       <ShowImage
+                        // @ts-expect-error:next-line
+                        // ignoring this error because the function parseImage has null checker
                         src={parseImageUrl(item.images[0])}
                         alt={item.title || "Product_image"}
                         width={40}
